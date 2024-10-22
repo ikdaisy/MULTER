@@ -1,5 +1,6 @@
 import userSchema from "./models/user.model.js"
 
+// Add user
 export async function addUser(req,res){
    const profile=req.file
    console.log(req.body);
@@ -18,3 +19,11 @@ export async function addUser(req,res){
    
 }
 
+// Display users
+export async function getUsers(req,res) {
+    const users = await userSchema.find()
+    console.log(users);
+    
+    res.status(200).send(users)
+    
+}

@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
 <body>
-    <form id="frm" enctype="multipart/form-data" >
-        <div class="name">Username:
-            <input type="text" id="username" name="username"></div>
-       <div class="email"> Email:
-        <input type="email" id="email" name="email"></div>
-        Profile:
-        <input type="file" name="pic"  /><br>
-        <input type="submit">
-      </form>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">KIKI</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./pages/add.html">Add user</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+   
+   
+          <div class="cards" id="cards" >
+            
+          </div>
+   
     <script src="./js/index.js"></script>
+    <script src="./js/bootstrap.bundle.min.js.js"></script>
 </body>
 </html>

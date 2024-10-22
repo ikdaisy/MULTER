@@ -1,33 +1,25 @@
-document.getElementById("frm").addEventListener("submit",(e)=>{
-    e.preventDefault()
-    const username=document.getElementById("username").value;
-    const email=document.getElementById("email").value;
-    console.log(e.target);
-    const data = new FormData(e.target)
+
+async function displayUser(){
+    const res = await fetch("http://localhost:3000/api/getusers")
+    console.log(res);
+    const data= await res.json()
     console.log(data);
-    // userData=JSON.stringify({username,email})
-    fetch("http://localhost:3000/api/upload",{
-        method:"POST",
-        body:data
-    }).then(async(res)=>{
-        console.log(res);
-        const data = await res.json()
-        if(res.status==201){
-            alert(data.msg)
-
-        }
-        else{
-            alert(data.msg)
-
-
-        }
+    str=``
+    data.map((user)=>{
+        // console.log(user.profile.filename);
         
-    }).catch((error)=>{
-        console.log(error);
-        
+        str+=`<div class="card" >
+            <div class="images" >
+                <img src="http://localhost:3000/api/image/${user.profile.filename}" alt="Profile" >
+                <span>${user.email}</span>
+                <h3>${user.username}</h3>
+                <button type="button" class="btn btn-success">EDIT</button>
+                <button type="button" class="btn btn-danger">DELETE</button>
+            </div>
+        </div>`
     })
+    document.getElementById("cards").innerHTML=str;
     
-
     
-
-})
+}
+displayUser()
