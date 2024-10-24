@@ -36,16 +36,13 @@ export async function deleteUser(req,res) {
    try{
     const {_id}=req.params
     const user = await userSchema.findOne({_id})
-    console.log(user);
+    // console.log(user);
     
     if(!user)
         return res.status(500).send({msg:"User is unavailable"})
     const __filename=fileURLToPath(import.meta.url)
-    console.log(__filename);
     const __dirname=dirname(__filename)
-    console.log(__dirname);
     const fullpath=join(__dirname,"/uploads/",user.profile.filename)
-    console.log(fullpath);
     //delete the image from the server
     await fs.unlink(fullpath)
     await userSchema.deleteOne({_id}).then(()=>{
@@ -70,16 +67,41 @@ export async function deleteUser(req,res) {
 export async function getUser(req,res) {
    try {
     const {_id}=req.params
-    console.log(_id);
     const data= await userSchema.findOne({_id})
-    console.log(data);
     res.status(200).send(data)
-    
    } catch (error) {
     res.status(404).send({msg:"Failed"})
-
-    
    }
-    
+}
+
+// Update user  data
+
+export async function updateUser(req,res) {
+    // console.log(req.params);
+    const {_id}=req.params
+    // console.log(_id);
+    const profile=req.file
+    // console.log(req.body);
+   const {username,email}=req.body;
+   const user = await userSchema.findOne({_id})
+   if(!user)
+       return res.status(500).send({msg:"User is unavailable"})
+  
+    const __filename=fileURLToPath(import.meta.url)
+    const __dirname=dirname(__filename)
+    const fullpath=join(__dirname,"/uploads/",user.profile.filename)
+    //delete the image only if the user has chosen the file
+  if(profile)
+    await fs.unlink(fullpath)
+
+    await userSchema.updateOne({_id},{$set:{username,email,profile}}).then(()=>{
+    res.status(200).send({msg:"Successfully updated"})
+}).catch((error)=>{
+    res.status(404).send({error:error})
+})
+  
+
+
+
     
 }

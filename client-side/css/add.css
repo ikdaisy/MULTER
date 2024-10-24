@@ -13,10 +13,10 @@ form{
     display: grid;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 25%;
     margin: 20px;
-    height: 70vh;
-    /* padding: 20px 20px; */
+    height: 75vh;
+    /* padding: 20px; */
     /* background-color:#efebeb; */
     border: 1px solid black;
     border-radius: 8px;
@@ -67,3 +67,11 @@ form{
   button:hover {
     background-color: #3e8e41;
   }
+
+  .pro img{
+    height: 100px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    /* margin-bottom: 10px; */
+}

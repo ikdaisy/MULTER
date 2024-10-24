@@ -1,7 +1,5 @@
 document.getElementById("frm").addEventListener("submit",(e)=>{
     e.preventDefault()
-    const username=document.getElementById("username").value;
-    const email=document.getElementById("email").value;
     console.log(e.target);
     const data = new FormData(e.target)
     console.log(data);

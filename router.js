@@ -25,9 +25,13 @@ router.route("/image/:filename").get((req,res)=>{
 })
 
 //delete user
-
 router.route("/deleteuser/:_id").delete(rh.deleteUser)
+//get user
 router.route("/getuser/:_id").get(rh.getUser)
+//update user
+router.route("/updateuser/:_id").put(upload.single('pic'),rh.updateUser)
+
+
 
 
 
