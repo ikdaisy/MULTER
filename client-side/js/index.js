@@ -13,7 +13,7 @@ async function displayUser(){
                 <img src="http://localhost:3000/api/image/${user.profile.filename}" alt="Profile" >
                 <span>${user.email}</span>
                 <h3>${user.username}</h3>
-                <button type="button" class="btn btn-success">EDIT</button>
+               <a href="./pages/edit.html?id=${user._id}"> <button type="button" class="btn btn-success" >EDIT</button></a>
                 <button type="button" class="btn btn-danger" onclick="deleteUser('${user._id}')">DELETE</button>
             </div>
         </div>`

@@ -27,6 +27,8 @@ router.route("/image/:filename").get((req,res)=>{
 //delete user
 
 router.route("/deleteuser/:_id").delete(rh.deleteUser)
+router.route("/getuser/:_id").get(rh.getUser)
+
 
 
 export default router

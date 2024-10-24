@@ -64,3 +64,22 @@ export async function deleteUser(req,res) {
     
     
 }
+
+//get single user data
+
+export async function getUser(req,res) {
+   try {
+    const {_id}=req.params
+    console.log(_id);
+    const data= await userSchema.findOne({_id})
+    console.log(data);
+    res.status(200).send(data)
+    
+   } catch (error) {
+    res.status(404).send({msg:"Failed"})
+
+    
+   }
+    
+    
+}
