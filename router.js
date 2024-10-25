@@ -13,11 +13,14 @@ const storage = multer.diskStorage({
     }
   })
   const upload = multer({ storage: storage })
+  
 //upload single file
 // router.route("/upload").post( upload.single('pic'),fileUpload)
+
 //upload multiple files
 router.route("/upload").post( upload.single('pic'),rh.addUser)
 router.route("/getusers").get(rh.getUsers)
+
 //load image from server to front-end
 router.route("/image/:filename").get((req,res)=>{
   const {filename}=req.params;

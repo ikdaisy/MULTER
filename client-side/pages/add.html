@@ -40,7 +40,10 @@
         </div>
         <div class="form-group">
           <label for="profilePhoto">Profile Photo:</label>
-          <input type="file"  name="pic" >
+          <input type="file"  name="pic" onchange="changePic()" id="profile" >
+        </div>
+        <div class="pro">
+          <img src="" alt="User Image" id="pro">
         </div>
         <button type="submit">Submit</button>
       </form>

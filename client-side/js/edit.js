@@ -17,7 +17,7 @@ async function displayUser(){
         </div>
         <div class="form-group">
           <label for="profilePhoto">Profile Photo:</label>
-          <input type="file"  name="pic" >
+          <input type="file" id="profile" name="pic" onchange="changePic()" >
         </div>
         <div class="pro">
                 <img src="http://localhost:3000/api/image/${data.profile.filename}" alt="" id="pro">
@@ -52,8 +52,6 @@ document.getElementById("frm").addEventListener("submit",(e)=>{
       }
       else{
           alert(data.error)
-
-
       }
       
   }).catch((error)=>{
@@ -63,3 +61,19 @@ document.getElementById("frm").addEventListener("submit",(e)=>{
   
 })
 
+function changePic() {
+  const fileInput = document.getElementById("profile");
+  const profileImage = document.getElementById("pro");
+
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      // console.log(e.target.result);
+      profileImage.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+}
